@@ -6,6 +6,8 @@ from streamlit_tags import st_tags
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
 
+
+
 def write_concept(product_name, company_name, use_case, product_type, needs, target_user, new, cred, differentiation, promise, backup):
     try:
         response = openai.Completion.create(
@@ -73,10 +75,10 @@ with st.form("Product/Service Concept Generator", clear_on_submit=False):
             st.write(concept_text)
             ste.download_button("Download", concept_text, f"{product_name} - Concept.txt")
 
-hide_streamlit_style = """
-            <style>
+ <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
