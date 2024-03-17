@@ -18,7 +18,6 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
                 f"The new point is {new} and the differentiation is {differentiation}. "
                 f"{product_name} promises to {promise} because {backup}. "
                 f"Here's an example concept -- Comfort Linen: Revolutionizing Rest for Those with Mobility Challenges. "
-            ...
                 "Are you tired of getting tangled in your bedsheets, especially if you face pain or mobility issues? For millions worldwide, this is more than just an annoyance; it's a significant problem. Comfort Linen is the solution. It's a game-changing approach to your nightly routine. "
                 "After extensive research, we created an award-winning system of friction-reducing sheets initially for caregivers. However, inspired by patients seeking the same comfort at home, we expanded our innovation to offer a complete range of mobility-enhancing products for consumers. "
                 "At Comfort Linen, we applied the principles of tribology, the science of friction, to develop a patented design that minimizes surface contact area, allowing sleepwear to glide with minimal resistance. Our sheets aren't just functional; they're also smooth, elegant, and luxurious, delivering unparalleled comfort. "
