@@ -20,17 +20,16 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
                 "But Comfort Linen goes beyond providing a good night's sleep. We've developed a range of mobility-enhancing products, including positioning pads, to assist caregivers. These products reduce strain and effort, promoting independence and easing the physical demands on caregivers. "
                 "Our technology has proven effective, with satisfied users praising improved movement and newfound independence. The Comfort Linen community has experienced firsthand the positive impact on both individuals with mobility issues and their dedicated caregivers. "
                 "Let's support the aging population, empower caregivers, and contribute to Japan's legacy of fostering health and wellness. Comfort Linen – where innovation meets tranquility, transforming the way we rest, one night at a time."
-
             ,
             temperature=0.7,
-            max_tokens=1278,
+            max_tokens=978,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0
         )
         return response['choices'][0]['text']
-    except Exception as e:
-        return f"An error occurred: {e}"
+ 
+
 st.header("Noetic Digital - Startup Concept Generator:")
 st.write("Complete the form below and Noetic will generate your concept")
 with st.form("Product/Service Concept Generator", clear_on_submit=False):
