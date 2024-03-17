@@ -14,7 +14,8 @@ def write_concept(product_name=product_name, product_type=product_type, use_case
         prompt=f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
                f"the product solves {needs} "
                f"the new point is {new} and the differentiation is {differentiation}, "
-               f"{product_name} promises to {promise} becauyse {backup} "
+               f"{product_name} promises to {promise} becauyse {backup} ",
+        
         temperature=0.7,
         max_tokens=278,
         top_p=1,
