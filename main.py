@@ -2,13 +2,15 @@ import streamlit as st
 import streamlit_ext as ste
 import openai
 from streamlit_tags import st_tags
+
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
+
 def write_concept(product_name, company_name, use_case, product_type, needs, target_user, new, cred, differentiation, promise, backup):
     try:
         response = openai.Completion.create(
-            model="gpt-3.5-turbo-instruct",  # Adjusted to use a non-chat model
-            prompt=
+            engine="gpt-3.5-turbo-instruct",  # Use "engine" instead of "model" for GPT-3.5-turbo
+            prompt=(
                 f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
                 f"the product solves {needs} because we have {cred}. "
                 f"The new point is {new} and the differentiation is {differentiation}. "
@@ -20,17 +22,19 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
                 "But Comfort Linen goes beyond providing a good night's sleep. We've developed a range of mobility-enhancing products, including positioning pads, to assist caregivers. These products reduce strain and effort, promoting independence and easing the physical demands on caregivers. "
                 "Our technology has proven effective, with satisfied users praising improved movement and newfound independence. The Comfort Linen community has experienced firsthand the positive impact on both individuals with mobility issues and their dedicated caregivers. "
                 "Let's support the aging population, empower caregivers, and contribute to Japan's legacy of fostering health and wellness. Comfort Linen – where innovation meets tranquility, transforming the way we rest, one night at a time."
-            ,
+            ),
             temperature=0.7,
-            max_tokens=978,
+            max_tokens=278,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0
         )
         return response['choices'][0]['text']
-)
+    except Exception as e:
+        return f"An error occurred: {e}"
 
-st.header("Noetic Digital Startup Concept Generator:")
+
+st.header("Noetic Digital - Startup Concept Generator:")
 st.write("Complete the form below and Noetic will generate your concept")
 
 with st.form("Product/Service Concept Generator", clear_on_submit=False):
@@ -59,6 +63,7 @@ with st.form("Product/Service Concept Generator", clear_on_submit=False):
     differentiation = st.text_area("What is different compared to other products that try to meet the same needs?")
     promise = st.text_area("What is the core promise to the consumer i.e., what will this product do for me, and how will I feel?")
     backup = st.text_area("What information can you give me to help me believe that?")
+
     submitted = st.form_submit_button("Write Concept")
     if submitted:
         with st.spinner("Writing concept..."):
