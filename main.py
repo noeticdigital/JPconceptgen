@@ -8,19 +8,19 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
 
 
-def write_concept(product_name=product_name, product_type=product_type, use_case=use_case, needs=needs, target_user=target_user, new=new, cred=cred, differentiation=differentiation, promise=promise, backup=backup):
-    response = openai.Completion.create(
-        model="text-davinci-002",
-        prompt=f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
-               f"the product solves {needs} "
-               f"the new point is {new} and the differentiation is {differentiation}, "
-               f"{product_name} promises to {promise} becauyse {backup} ",
-        
-        temperature=0.7,
-        max_tokens=278,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0
+def write_concept(product_name, company_name, use_case, product_type, needs, target_user, new, cred, differentiation, promise, backup):
+    try:
+        response = openai.Completion.create(
+            model="text-davinci-002",
+            prompt=f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
+                   f"the product solves {needs} because we have {cred}. "
+                   f"The new point is {new} and the differentiation is {differentiation}. "
+                   f"{product_name} promises to {promise} because {backup}.",
+            temperature=0.7,
+            max_tokens=278,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0
     )
     return response['choices'][0]['text']
 
