@@ -23,7 +23,7 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
 
             ,
             temperature=0.7,
-            max_tokens=278,
+            max_tokens=1278,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0
