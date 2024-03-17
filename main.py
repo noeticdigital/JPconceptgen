@@ -8,7 +8,7 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
 
 
-def write_cover_letter(product_name, product_type, use_case, target_user, personal_skills, job_description, target_user, company_name):
+def write_cover_letter(product_name, product_type, use_case, target_user, personal_skills, job_description, needs, company_name):
     response = openai.Completion.create(
         model="text-davinci-002",
         prompt=f"write a cover letter as {product_name}, contact details {company_name} and {target_user}, "
@@ -31,9 +31,9 @@ st.write("Complete the form below and I will generat eyour concept")
 
 with st.form("Product/Service Concept Generator", clear_on_submit=False):
     product_name = st.text_input("Product/Service Name: ")
-    target_user = st.text_input("Who is the product targeted at? ")
+    needs = st.text_input("What specific needs does it meet?")
     company_name = st.text_input("Company name: ")
-    use_case = st.text_input("Enter the product or service use_case:")
+    use_case = st.text_input("Enter the product or service use case:")
     product_type = st_tags(
         label="Enter your product_type:",
         text="Press enter product_type detailed",
