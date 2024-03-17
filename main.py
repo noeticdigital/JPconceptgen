@@ -9,7 +9,7 @@ openai.api_key = OPENAI_API_KEY
 def write_concept(product_name, company_name, use_case, product_type, needs, target_user, new, cred, differentiation, promise, backup):
     try:
         response = openai.Completion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-3.5-turbo-0125",
             prompt=f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
                    f"the product solves {needs} because we have {cred}. "
                    f"The new point is {new} and the differentiation is {differentiation}. "
