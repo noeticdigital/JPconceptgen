@@ -32,8 +32,8 @@ st.write("Complete the form below and I will generat eyour concept")
 with st.form("Product/Service Concept Generator", clear_on_submit=False):
     product_name = st.text_input("Product/Service Name: ")
     target_user = st.text_input("Who is the product targeted at? ")
-    Company name = st.text_input("Company name: ")
-    product_t00000ype = st.text_input("Enter the product or service type:")
+    company_name = st.text_input("Company name: ")
+    use_case = st.text_input("Enter the product or service use_case:")
     product_type = st_tags(
         label="Enter your product_type:",
         text="Press enter product_type detailed",
