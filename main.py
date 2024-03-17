@@ -8,13 +8,13 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
 
 
-def write_cover_letter(full_name, job_title, adv_tech_skills, int_tech_skills, personal_skills, job_description, contact_number, email):
+def write_cover_letter(product_name, product_type, use_case, target_user, personal_skills, job_description, target_user, company_name):
     response = openai.Completion.create(
         model="text-davinci-002",
-        prompt=f"write a cover letter as {full_name}, contact details {email} and {contact_number}, "
+        prompt=f"write a cover letter as {product_name}, contact details {company_name} and {target_user}, "
                f"applying for the following job vacancy to make him "
-               f"an ideal candidate based on the selection criteria and his skills. Yonatan is a {job_title}, "
-               f"with advanced {adv_tech_skills} skills, intermediate {int_tech_skills} skills, and personal "
+               f"an ideal candidate based on the selection criteria and his skills. {product_name} is a {product_type}, "
+               f"with  {use_case} , intermediate {int_tech_skills} skills, and personal "
                f"skills including {personal_skills}:"
                f"\n\n{job_description}",
         temperature=0.7,
@@ -26,29 +26,27 @@ def write_cover_letter(full_name, job_title, adv_tech_skills, int_tech_skills, p
     return response['choices'][0]['text']
 
 
-st.header("COVER LETTER GENERATOR:")
-st.write("Complete the form below and we'll do our best to bang together a bitchin cover letter for your dream job:")
+st.header("Startup Concept GENERATOR:")
+st.write("Complete the form below and I will generat eyour concept")
 
-with st.form("Cover Letter Generator", clear_on_submit=False):
-    applicant_name = st.text_input("Full Name: ")
-    contact_number = st.text_input("Contact number: ")
-    email = st.text_input("Email: ")
-    job_title = st.text_input("Enter your job title:")
-    advanced_technical_skills = st_tags(
-        label="Enter your advanced technical skills:",
-        text="Press enter or tap to add more skills",
+with st.form("Product/Service Concept Generator", clear_on_submit=False):
+    product_name = st.text_input("Product/Service Name: ")
+    target_user = st.text_input("Who is the product targeted at? ")
+    Company name = st.text_input("Company name: ")
+    product_t00000ype = st.text_input("Enter the product or service type:")
+    product_type = st_tags(
+        label="Enter your product_type:",
+        text="Press enter product_type detailed",
         value=[],
-        suggestions=["Python", "Javascript", "Java", "C#", "C++", "Golang", "HTML", "CSS", "Microsoft Office Suite",
-                     "Adobe Suite", "XPLAN", "MYOB"],
+        suggestions=["Saas", "food", "bevergae", "appliance", "AI"],
         maxtags=8,
         key="1"
     )
-    intermediate_technical_skills = st_tags(
-        label="Enter your intermediate technical skills:",
-        text="Press enter or tap to add more skills",
+    target_user = st_tags(
+        label="Enter target user",
+        text="Press enter dsecond product_type detailed",
         value=[],
-        suggestions=["Python", "Javascript", "Java", "C#", "C++", "Golang", "HTML", "CSS", "Microsoft Office Suite",
-                     "Adobe Suite", "XPLAN", "MYOB"],
+        suggestions=["elderly", "caretakers", "families", "carehomes", "doctors"],
         maxtags=8,
         key="2"
     )
@@ -63,11 +61,11 @@ with st.form("Cover Letter Generator", clear_on_submit=False):
     )
     job_description = st.text_area("Paste a few relevant paragraphs from the job you wish to apply for:")
 
-    submitted = st.form_submit_button("Write my damn cover letter!")
+    submitted = st.form_submit_button("Write Concpet")
     if submitted:
         with st.spinner("Writing cover letter..."):
-            cover_letter_text = write_cover_letter(full_name=applicant_name, job_title=job_title,
-                                                   adv_tech_skills=advanced_technical_skills,
+            cover_letter_text = write_cover_letter(product_name=product_name, product_type=product_type,
+                                                   use_case=use_case,
                                                    int_tech_skills=intermediate_technical_skills,
                                                    personal_skills=personal_skills, job_description=job_description,
                                                    contact_number=contact_number, email=email)
