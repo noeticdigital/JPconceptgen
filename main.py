@@ -75,7 +75,8 @@ with st.form("Product/Service Concept Generator", clear_on_submit=False):
             st.write(concept_text)
             ste.download_button("Download", concept_text, f"{product_name} - Concept.txt")
 
- <style>
+hide_streamlit_style = """
+            <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             </style>
