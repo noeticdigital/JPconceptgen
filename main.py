@@ -16,11 +16,10 @@ def write_cover_letter(product_name=product_name, product_type=product_type,
     response = openai.Completion.create(
         model="text-davinci-002",
         prompt=f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
-               f"the product solves "
-               f"an ideal candidate based on the selection criteria and his skills. {product_name} is a {product_type}, "
-               f"with  {use_case} , intermediate {int_tech_skills} skills, and personal "
-               f"skills including {personal_skills}:"
-               f"\n\n{job_description}",
+               f"the product solves {needs} "
+               f"the new point is {new} and the differentiation is {differentiation}, "
+               f"{product_name} promises to {promise} becauyse {backup} "
+            ,
         temperature=0.7,
         max_tokens=278,
         top_p=1,
