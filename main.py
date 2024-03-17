@@ -8,11 +8,15 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
 
 
-def write_cover_letter(product_name, product_type, use_case, target_user, personal_skills, job_description, needs, company_name):
+def write_cover_letter(product_name=product_name, product_type=product_type,
+                                                   use_case=use_case,
+                                                   needs=needs,
+                                                   target_user=target_user, new=new,
+                                                   cred=cred, differentiation=differentiation, promise=promise, backup=backup):
     response = openai.Completion.create(
         model="text-davinci-002",
-        prompt=f"write a cover letter as {product_name}, contact details {company_name} and {target_user}, "
-               f"applying for the following job vacancy to make him "
+        prompt=f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
+               f"the product solves "
                f"an ideal candidate based on the selection criteria and his skills. {product_name} is a {product_type}, "
                f"with  {use_case} , intermediate {int_tech_skills} skills, and personal "
                f"skills including {personal_skills}:"
@@ -26,14 +30,13 @@ def write_cover_letter(product_name, product_type, use_case, target_user, person
     return response['choices'][0]['text']
 
 
-st.header("Startup Concept GENERATOR:")
-st.write("Complete the form below and I will generat eyour concept")
+st.header("Noetic Digital - Startup Concept Generator:")
+st.write("Complete the form below and Noetic will generate your concept")
 
 with st.form("Product/Service Concept Generator", clear_on_submit=False):
     product_name = st.text_input("Product/Service Name: ")
-    needs = st.text_input("What specific needs does it meet?")
     company_name = st.text_input("Company name: ")
-    use_case = st.text_input("Enter the product or service use case:")
+    use_case = st.text_area("Enter the product or service use case:")
     product_type = st_tags(
         label="Enter your product_type:",
         text="Press enter product_type detailed",
@@ -50,26 +53,30 @@ with st.form("Product/Service Concept Generator", clear_on_submit=False):
         maxtags=8,
         key="2"
     )
-    personal_skills = st_tags(
-        label="Enter your personal skills:",
-        text="Press enter or tap to add more skills",
-        value=[],
-        suggestions=["Able to work under pressure", "Great communication skills", "Team leader", "Team player",
-                     "Fast learner", "Goal driven", "Great attention to detail", "Career driven"],
-        maxtags=8,
-        key="3"
-    )
-    job_description = st.text_area("Paste a few relevant paragraphs from the job you wish to apply for:")
+    
+    needs = st.text_area("What specific needs does it meet?")
+    
+    new = st.text_area("What is new about this product?")
+    
+    cred = st.text_area("Who produced it, including their background, history and ‘right’ to make such a product?")
+
+    differentiation = st.text_area("What is different compared to other products that try to meet the same needs?")
+
+    promise = st.text_area("What is the core promise to the consumer i.e. what will this product do for me, and how will I feel?")
+
+    backup = st.text_area("What information can you give me to help me believe that?")
+
+    
 
     submitted = st.form_submit_button("Write Concpet")
     if submitted:
-        with st.spinner("Writing cover letter..."):
-            cover_letter_text = write_cover_letter(product_name=product_name, product_type=product_type,
+        with st.spinner("Writing concept..."):
+            cover_letter_text = write_concept(product_name=product_name, product_type=product_type,
                                                    use_case=use_case,
-                                                   int_tech_skills=intermediate_technical_skills,
-                                                   personal_skills=personal_skills, job_description=job_description,
-                                                   contact_number=contact_number, email=email)
-            st.subheader("Your cover letter:")
-            st.write(cover_letter_text)
-            ste.download_button("Download", cover_letter_text,
-                                f"{applicant_name} - Cover letter.txt")
+                                                   needs=needs,
+                                                   target_user=target_user, new=new,
+                                                   cred=cred, differentiation=differentiation, promise=promise, backup=backup)
+            st.subheader("Your concept:")
+            st.write(concept_text)
+            ste.download_button("Download", concept_text,
+                                f"{concept_name} - Concept.txt")
