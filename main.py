@@ -19,14 +19,7 @@ def write_concept(product_name=product_name, product_type=product_type,
                f"the product solves {needs} "
                f"the new point is {new} and the differentiation is {differentiation}, "
                f"{product_name} promises to {promise} becauyse {backup} "
-      f" -- here's an example concept: Introducing Comfort Linen – Revolutionizing Rest for Those with Mobility Challenges
-Are you tired of getting tangled in your bedsheets, especially if you face pain or mobility issues? For millions worldwide, this is more than just an annoyance; it's a significant problem. Comfort Linen is the solution. It's a game-changing approach to your nightly routine.
-After extensive research, we created an award-winning system of friction-reducing sheets initially for caregivers. However, inspired by patients seeking the same comfort at home, we expanded our innovation to offer a complete range of mobility-enhancing products for consumers.
-At Comfort Linen, we applied the principles of tribology, the science of friction, to develop a patented design that minimizes surface contact area, allowing sleepwear to glide with minimal resistance. Our sheets aren't just functional; they're also smooth, elegant, and luxurious, delivering unparalleled comfort.
-But Comfort Linen goes beyond providing a good night's sleep. We've developed a range of mobility-enhancing products, including positioning pads, to assist caregivers. These products reduce strain and effort, promoting independence and easing the physical demands on caregivers.
-Our technology has proven effective, with satisfied users praising improved movement and newfound independence. The Comfort Linen community has experienced firsthand the positive impact on both individuals with mobility issues and their dedicated caregivers.
-Let's support the aging population, empower caregivers, and contribute to Japan's legacy of fostering health and wellness. Comfort Linen – where innovation meets tranquility, transforming the way we rest, one night at a time."
-            ,
+               f"\n\n{job_description}",
         temperature=0.7,
         max_tokens=278,
         top_p=1,
@@ -72,7 +65,7 @@ with st.form("Product/Service Concept Generator", clear_on_submit=False):
 
     backup = st.text_area("What information can you give me to help me believe that?")
 
-    
+
 
     submitted = st.form_submit_button("Write Concpet")
     if submitted:
