@@ -28,7 +28,8 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
             presence_penalty=0
         )
         return response['choices'][0]['text']
- 
+)
+
 st.header("Noetic Digital Startup Concept Generator:")
 st.write("Complete the form below and Noetic will generate your concept")
 
