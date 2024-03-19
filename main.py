@@ -34,7 +34,7 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
         return f"An error occurred: {e}"
 
 
-st.header("Noetic Digital - Startup Concept Generator:")
+st.header("Noetic Digital - Product or Service Concept Generator:")
 st.write("Complete the form below and Noetic will generate your concept description")
 
 with st.form("Product or Service Concept Generator", clear_on_submit=False):
