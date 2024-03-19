@@ -61,7 +61,7 @@ with st.form("Product or Service Concept Generator", clear_on_submit=False):
     new = st.text_area("What is new about this product?")
     cred = st.text_area("Who produced it, including their background, history; and ‘right’ to make such a product?")
     differentiation = st.text_area("What is different, when compared with other products that try to meet the same needs?")
-    promise = st.text_area("What is the core promise to the consumer i.e. what will this product do for me, and how will I feel?")
+    promise = st.text_area("What is the core promise to the consumer; i.e. what will this product do for me and how will I feel?")
     backup = st.text_area("What information can you offer to help me believe this promise?")
 
     submitted = st.form_submit_button("Write Concept")
