@@ -45,7 +45,7 @@ with st.form("Product or Service Concept Generator", clear_on_submit=False):
         label="Enter the product type:",
         text="Press enter after each product type",
         value=[],
-        suggestions=["Saas", "food", "beverage", "appliance", "AI"],
+        suggestions=["mental-health", "age-tech", "software", "medical", "communication", "entertainment", "food", "beverage", "appliance", "AI"],
         maxtags=8,
         key="1"
     )
