@@ -9,7 +9,7 @@ def write_concept(product_name, company_name, use_case, needs, new, cred, differ
         response = openai.Completion.create(
             engine="gpt-3.5-turbo-instruct",  # Use "engine" instead of "model" for GPT-3.5-turbo
             prompt=(
-                f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
+                f"write a product concept called {product_name}, created by {company_name}, "
                 f"the product solves {needs} because we have {cred}. "
                 f"The new point is {new} and the differentiation is {differentiation}. "
                 f"{product_name} promises to {promise} because {backup}. "
