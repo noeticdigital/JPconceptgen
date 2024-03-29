@@ -15,7 +15,7 @@ def write_product_concept(product_name, company_name, use_case, needs, new, cred
         f"Here's an example concept: Introducing product name – Revolutionizing Rest for Those with Mobility Challenges"
 f"Are you tired of getting tangled in your bedsheets, especially if you face pain or mobility issues? For millions worldwide, this is more than just an annoyance; it's a significant problem. Comfort Linen is the solution. It's a game-changing approach to your nightly routine."
 f"At Comfort Linen, we applied the principles of tribology, the science of friction, to develop a patented design that minimizes surface contact area, allowing sleepwear to glide with minimal resistance. Our sheets aren't just functional; they're also smooth, elegant, and luxurious, delivering unparalleled comfort."
-       
+       ,
         temperature=0.7,
         max_tokens=378,
         top_p=1,
