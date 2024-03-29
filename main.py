@@ -4,7 +4,7 @@ import openai
 from streamlit_tags import st_tags
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
-def write_concept(product_name, company_name, use_case, product_type, needs, target_user, new, cred, differentiation, promise, backup):
+def write_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup):
     try:
         response = openai.Completion.create(
             engine="gpt-3.5-turbo-instruct",  # Use "engine" instead of "model" for GPT-3.5-turbo
@@ -18,7 +18,6 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
                 "After extensive research, we created an award-winning system of friction-reducing sheets initially for caregivers. However, inspired by patients seeking the same comfort at home, we expanded our innovation to offer a complete range of mobility-enhancing products for consumers. "
                 "At Comfort Linen, we applied the principles of tribology, the science of friction, to develop a patented design that minimizes surface contact area, allowing sleepwear to glide with minimal resistance. Our sheets aren't just functional; they're also smooth, elegant, and luxurious, delivering unparalleled comfort. "
                 "But Comfort Linen goes beyond providing a good night's sleep. We've developed a range of mobility-enhancing products, including positioning pads, to assist caregivers. These products reduce strain and effort, promoting independence and easing the physical demands on caregivers. "
-                "Our technology has proven effective, with satisfied users praising improved movement and newfound independence. The Comfort Linen community has experienced firsthand the positive impact on both individuals with mobility issues and their dedicated caregivers. "
                 "Let's support the aging population, empower caregivers, and contribute to Japan's legacy of fostering health and wellness. Comfort Linen – where innovation meets tranquility, transforming the way we rest, one night at a time."
             ),
             temperature=0.7,
@@ -36,25 +35,6 @@ with st.form("Product or Service Concept Generator", clear_on_submit=False):
     product_name = st.text_input("Product or Service Name: ")
     company_name = st.text_input("Company Name: ")
     use_case = st.text_area("Enter the product or service use case:")
-    product_type = st_tags(
-        label="Enter the product type:",
-        text="Press enter after each product type",
-        value=[],
-        suggestions=["mental-health", "age-tech", "software", "medical", "communication", "entertainment", "food", "beverage", "appliance", "AI"],
-        maxtags=8,
-        key="1"
-    )
-
-    
-  
-    target_user = st_tags(
-        label="Enter the target user",
-        text="Press enter after each user type",
-        value=[],
-        suggestions=["elderly", "caretakers", "families", "care homes", "doctors"],
-        maxtags=8,
-        key="2"
-    )
     needs = st.text_area("What specific need/s does it meet?")
     new = st.text_area("What is new about this product?")
     cred = st.text_area("Who produced it, including their background, history; and ‘right’ to make such a product?")
