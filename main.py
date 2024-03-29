@@ -11,7 +11,7 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
         response = openai.Completion.create(
             engine="gpt-3.5-turbo-instruct",  # Use "engine" instead of "model" for GPT-3.5-turbo
             prompt=(
-                f"write a product concept called {product_name}, created by {company_name} for {target_user}, "
+                f"write a 300 word product concept called {product_name}, created by {company_name} for {target_user}, "
                 f"include {needs}, {cred}, {new}, {differentiation}, {product_name}, {promise}, {backup}. "
                 f"Here's an example concept -- Comfort Linen: Revolutionizing Rest for Those with Mobility Challenges. "
                 "Are you tired of getting tangled in your bedsheets, especially if you face pain or mobility issues? For millions worldwide, this is more than just an annoyance; it's a significant problem. Comfort Linen is the solution. It's a game-changing approach to your nightly routine. "
@@ -22,7 +22,7 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
                 "Let's support the aging population, empower caregivers, and contribute to Japan's legacy of fostering health and wellness. Comfort Linen – where innovation meets tranquility, transforming the way we rest, one night at a time."
             ),
             temperature=0.7,
-            max_tokens=308,
+            max_tokens=3080,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0
