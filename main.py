@@ -20,6 +20,7 @@ def write_cover_letter(full_name, job_title, adv_tech_skills, int_tech_skills, p
                 "After extensive research, we created an award-winning system of friction-reducing sheets initially for caregivers. However, inspired by patients seeking the same comfort at home, we expanded our innovation to offer a complete range of mobility-enhancing products for consumers. "
                 "At Comfort Linen, we applied the principles of tribology, the science of friction, to develop a patented design that minimizes surface contact area, allowing sleepwear to glide with minimal resistance. Our sheets aren't just functional; they're also smooth, elegant, and luxurious, delivering unparalleled comfort. "
                 "Let's support the aging population, empower caregivers, and contribute to Japan's legacy of fostering health and wellness. Comfort Linen – where innovation meets tranquility, transforming the way we rest, one night at a time.",
+    
         temperature=0.7,
         max_tokens=278,
         top_p=1,
