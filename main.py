@@ -2,8 +2,10 @@ import streamlit as st
 import streamlit_ext as ste
 import openai
 from streamlit_tags import st_tags
+
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
+
 def write_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup):
     try:
         response = openai.Completion.create(
@@ -40,6 +42,7 @@ with st.form("Product or Service Concept Generator", clear_on_submit=False):
     promise = st.text_area("What is the core promise to the consumer; i.e. what will this product do for me and how will I feel?")
     backup = st.text_area("What information can you offer to help me believe this promise?")
     submitted = st.form_submit_button("Write Concept")
+    
     if submitted:
         with st.spinner("Writing concept..."):
             concept_text = write_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup)
