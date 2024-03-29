@@ -44,7 +44,7 @@ with st.form("Product or Service Concept Generator", clear_on_submit=False):
     submitted = st.form_submit_button("Write Concept")
     if submitted:
         with st.spinner("Writing concept..."):
-            concept_text = write_concept(product_name, company_name, use_case, product_type, needs, target_user, new, cred, differentiation, promise, backup)
+            concept_text = write_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup)
             st.subheader("Your concept:")
             st.write(concept_text)
             ste.download_button("Download", concept_text, f"{product_name} - Concept.txt")
