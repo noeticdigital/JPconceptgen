@@ -25,7 +25,7 @@ def write_cover_letter(full_name, job_title, personal_skills, job_description, c
     prompt += f"Describe how they fit the job description: {job_description}. Include their contact number: {contact_number} and email: {email}."
     
     response = openai.Completion.create(
-        model="text-davinci-003",
+        model="gpt-3.5-turbo-instruct",
         prompt=prompt,
         temperature=0.7,
         max_tokens=400,
@@ -50,16 +50,3 @@ with st.form("product_concept_form", clear_on_submit=True):
         concept_text = write_product_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup)
         st.subheader("Generated Product Concept:")
         st.write(concept_text)
-
-st.header("Cover Letter Generator:")
-with st.form("cover_letter_form", clear_on_submit=True):
-    full_name = st.text_input("Your Full Name:")
-    job_title = st.text_input("Job Title You're Applying For:")
-    personal_skills = st.text_area("List Your Personal Skills:")
-    job_description = st.text_area("Job Description:")
-    contact_number = st.text_input("Contact Number:")
-    email = st.text_input("Email:")
-    if st.form_submit_button("Generate Cover Letter"):
-        cover_letter_text = write_cover_letter(full_name, job_title, personal_skills, job_description, contact_number, email)
-        st.subheader("Your Cover Letter:")
-        st.write(cover_letter_text)
