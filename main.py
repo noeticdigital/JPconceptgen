@@ -7,28 +7,13 @@ openai.api_key = OPENAI_API_KEY
 
 def write_product_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup):
     response = openai.Completion.create(
-        model="text-davinci-003",
+        model="gpt-3.5-turbo-instruct",
         prompt=f"Write a product concept for {product_name}, created by {company_name}. It is designed to {use_case}. "
                f"It meets the need of {needs} by offering {new}. The product is produced by {cred}. "
                f"It differs from other products by {differentiation}. The core promise to the consumer is {promise}. "
                f"To support this promise, we provide {backup}.",
         temperature=0.7,
         max_tokens=278,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0
-    )
-    return response.choices[0].text
-
-def write_cover_letter(full_name, job_title, personal_skills, job_description, contact_number, email):
-    prompt = f"Write a cover letter for {full_name}, applying for the position of {job_title}. Highlight their skills: {personal_skills}. "
-    prompt += f"Describe how they fit the job description: {job_description}. Include their contact number: {contact_number} and email: {email}."
-    
-    response = openai.Completion.create(
-        model="gpt-3.5-turbo-instruct",
-        prompt=prompt,
-        temperature=0.7,
-        max_tokens=400,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
