@@ -22,7 +22,7 @@ def write_concept(product_name, company_name, use_case, product_type, needs, tar
                 "Let's support the aging population, empower caregivers, and contribute to Japan's legacy of fostering health and wellness. Comfort Linen – where innovation meets tranquility, transforming the way we rest, one night at a time."
             ),
             temperature=0.7,
-            max_tokens=278,
+            max_tokens=378,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0
