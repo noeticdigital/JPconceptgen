@@ -26,7 +26,7 @@ def write_concept(product_name, company_name, use_case, needs, new, cred, differ
         )
         return response['choices'][0]['text']
     
-st.header("Noetic Digital - Product or Service Concept Generator:")
+st.header("Noetic Digital Product or Service Concept Generator:")
 st.write("Complete the form below and Noetic will generate your concept description")
 
 with st.form("Product or Service Concept Generator", clear_on_submit=False):
