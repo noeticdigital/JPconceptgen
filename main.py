@@ -31,39 +31,17 @@ def write_cover_letter(full_name, job_title, adv_tech_skills, int_tech_skills, p
 st.header("COVER LETTER GENERATOR:")
 st.write("Complete the form below and we'll do our best to bang together a bitchin cover letter for your dream job:")
 
-with st.form("Cover Letter Generator", clear_on_submit=False):
-    applicant_name = st.text_input("Full Name: ")
-    contact_number = st.text_input("Contact number: ")
-    email = st.text_input("Email: ")
-    job_title = st.text_input("Enter your job title:")
-    advanced_technical_skills = st_tags(
-        label="Enter your advanced technical skills:",
-        text="Press enter or tap to add more skills",
-        value=[],
-        suggestions=["Python", "Javascript", "Java", "C#", "C++", "Golang", "HTML", "CSS", "Microsoft Office Suite",
-                     "Adobe Suite", "XPLAN", "MYOB"],
-        maxtags=8,
-        key="1"
-    )
-    intermediate_technical_skills = st_tags(
-        label="Enter your intermediate technical skills:",
-        text="Press enter or tap to add more skills",
-        value=[],
-        suggestions=["Python", "Javascript", "Java", "C#", "C++", "Golang", "HTML", "CSS", "Microsoft Office Suite",
-                     "Adobe Suite", "XPLAN", "MYOB"],
-        maxtags=8,
-        key="2"
-    )
-    personal_skills = st_tags(
-        label="Enter your personal skills:",
-        text="Press enter or tap to add more skills",
-        value=[],
-        suggestions=["Able to work under pressure", "Great communication skills", "Team leader", "Team player",
-                     "Fast learner", "Goal driven", "Great attention to detail", "Career driven"],
-        maxtags=8,
-        key="3"
-    )
-    job_description = st.text_area("Paste a few relevant paragraphs from the job you wish to apply for:")
+with st.form("Product or Service Concept Generator", clear_on_submit=False):
+    product_name = st.text_input("Product or Service Name: ")
+    company_name = st.text_input("Company Name: ")
+    use_case = st.text_area("Enter the product or service use case:")
+    needs = st.text_area("What specific need/s does it meet?")
+    new = st.text_area("What is new about this product?")
+    cred = st.text_area("Who produced it, including their background, history; and ‘right’ to make such a product?")
+    differentiation = st.text_area("What is different, when compared with other products that try to meet the same needs?")
+    promise = st.text_area("What is the core promise to the consumer; i.e. what will this product do for me and how will I feel?")
+    backup = st.text_area("What information can you offer to help me believe this promise?")
+    submitted = st.form_submit_button("Write Concept")
 
     submitted = st.form_submit_button("Write my damn cover letter!")
     if submitted:
