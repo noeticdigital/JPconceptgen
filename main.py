@@ -14,7 +14,7 @@ def write_product_concept(product_name, company_name, use_case, needs, new, cred
                f"To support this promise, {backup}."
          ,
         temperature=0.7,
-        max_tokens=278,
+        max_tokens=378,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
