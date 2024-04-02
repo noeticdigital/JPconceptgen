@@ -8,11 +8,10 @@ openai.api_key = OPENAI_API_KEY
 def write_product_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup):
     response = openai.Completion.create(
         model="gpt-3.5-turbo-instruct",
-        prompt=f"Write a product concept following this structure: {product_name}, created by {company_name}, is designed to {use_case}. "
+        prompt=f"Write a product concept within 250 words, following this structure: {product_name}, created by {company_name}, is designed to {use_case}. "
                f"It meets the need of {needs} by offering {new}. The product is produced by {cred}. "
                f"It differs from other products by {differentiation}. Its core promise is {promise}. "
                f"To support this promise, {backup}."
-               f"keep it within 250 words."
          ,
         temperature=0.7,
         max_tokens=328,
