@@ -27,7 +27,7 @@ st.header("Product or Service Concept Generator:")
 image_url = 'https://living-best.tech/wp-content/webp-express/webp-images/uploads/2023/07/LivingBest_Logo_CarterGroup-V2.jpg.webp'
 
 # Use Streamlit's st.image function to display the image
-st.image(image_url, caption='Image Caption Here')
+st.image(image_url, caption='Generator powered by Noetic Digital')
 
 with st.form("product_concept_form", clear_on_submit=True):
     product_name = st.text_input("Product or Service Name:")
