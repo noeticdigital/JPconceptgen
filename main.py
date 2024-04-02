@@ -22,6 +22,13 @@ def write_product_concept(product_name, company_name, use_case, needs, new, cred
     return response.choices[0].text
 
 st.header("Product or Service Concept Generator:")
+
+# URL of the image you want to display
+image_url = 'https://living-best.tech/wp-content/webp-express/webp-images/uploads/2023/07/LivingBest_Logo_CarterGroup-V2.jpg.webp'
+
+# Use Streamlit's st.image function to display the image
+st.image(image_url, caption='Image Caption Here')
+
 with st.form("product_concept_form", clear_on_submit=True):
     product_name = st.text_input("Product or Service Name:")
     company_name = st.text_input("Company Name:")
