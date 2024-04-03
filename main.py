@@ -54,7 +54,7 @@ with st.form("product_concept_form", clear_on_submit=True):
     promise = st.text_area("消費者への核となる約束は何ですか；つまり、この製品は私に何をしてくれるのか、そして私はどのように感じるのか？")
     backup = st.text_area("この約束を信じるために、どのような情報を提供できますか？")
     if st.form_submit_button("製品コンセプトを生成"):
-        concept_text, concept_text_japanese = write_product_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup)
+    concept_text_japanese, concept_text = write_product_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup)
         st.subheader("生成された製品コンセプト（日本語）:")
         st.write(concept_text)
         st.subheader("生成された製品コンセプト（英語）:")
