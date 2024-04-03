@@ -14,7 +14,7 @@ def write_product_concept(product_name, company_name, use_case, needs, new, cred
                f"他の製品との違いは{differentiation}です。その核となる約束は{promise}です。"
                f"この約束を支えるために、{backup}。",
         temperature=0.7,
-        max_tokens=358,
+        max_tokens=600,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
