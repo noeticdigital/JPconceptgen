@@ -6,7 +6,7 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
 
 def write_product_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup):
-    # 英語の製品コンセプトを生成
+    # 日本語の製品コンセプトを生成
     response = openai.Completion.create(
         model="gpt-3.5-turbo-instruct",
         prompt=f"250語以内で製品コンセプトを記述してください。以下の構造に従います: {product_name}は{company_name}によって作られ、{use_case}することを目的としています。"
@@ -19,12 +19,12 @@ def write_product_concept(product_name, company_name, use_case, needs, new, cred
         frequency_penalty=0,
         presence_penalty=0
     )
-    英語のコンセプト = response.choices[0].text
+    日本語のコンセプト = response.choices[0].text
 
-    # コンセプトを日本語に翻訳
-    日本語のコンセプト = openai.Completion.create(
+    # コンセプトを英語に翻訳
+    英語のコンセプト = openai.Completion.create(
         engine="gpt-3.5-turbo-instruct",
-        prompt=f"日本語に翻訳してください: {英語のコンセプト}",
+        prompt=f"英語に翻訳してください: {日本語のコンセプト}",
         temperature=0.7,
         max_tokens=600,
         top_p=1.0,
@@ -32,7 +32,7 @@ def write_product_concept(product_name, company_name, use_case, needs, new, cred
         presence_penalty=0
     ).choices[0].text
 
-    return 英語のコンセプト, 日本語のコンセプト
+    return 日本語のコンセプト, 英語のコンセプト
 
 st.header("製品またはサービスコンセプトジェネレーター:")
 st.text("Noetic Digital提供")
@@ -55,7 +55,7 @@ with st.form("product_concept_form", clear_on_submit=True):
     backup = st.text_area("この約束を信じるために、どのような情報を提供できますか？")
     if st.form_submit_button("製品コンセプトを生成"):
         concept_text, concept_text_japanese = write_product_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup)
-        st.subheader("生成された製品コンセプト（英語）:")
-        st.write(concept_text)
         st.subheader("生成された製品コンセプト（日本語）:")
+        st.write(concept_text)
+        st.subheader("生成された製品コンセプト（英語）:")
         st.write(concept_text_japanese)
