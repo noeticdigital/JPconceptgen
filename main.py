@@ -1,5 +1,8 @@
 import streamlit as st
 import openai
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 # openaiが正しくインストールされ、設定されていることを前提とします
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
