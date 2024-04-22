@@ -5,6 +5,24 @@ import openai
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 openai.api_key = OPENAI_API_KEY
 
+def send_email(subject, body, to_email):
+    gmail_user = st.secrets["gmail_user"]
+    gmail_password = st.secrets["gmail_password"]
+
+    msg = MIMEMultipart()
+    msg['From'] = gmail_user
+    msg['To'] = to_email
+    msg['Subject'] = subject
+    body = body
+    msg.attach(MIMEText(body, 'plain'))
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(gmail_user, gmail_password)
+    text = msg.as_string()
+    server.sendmail(gmail_user, to_email, text)
+    server.quit()
+
 def write_product_concept(product_name, company_name, use_case, needs, new, cred, differentiation, promise, backup):
     # 日本語の製品コンセプトを生成
     response = openai.Completion.create(
