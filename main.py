@@ -32,7 +32,7 @@ def write_product_concept(product_name, company_name, use_case, needs, new, cred
         presence_penalty=0
     ).choices[0].text
 
-    email_body = f"Generated Product Concept (English):\n\n{english_concept}\n\nGenerated Product Concept (Japanese):\n\n{japanese_concept}"
+    email_body = f"Generated Product Concept (JP):\n\n{日本語のコンセプト}\n\nGenerated Product Concept (EN):\n\n{英語のコンセプト}"
     send_email("New Product Concept Generated", email_body, "appdevnoetic@gmail.com")  # Change recipient email as needed
 
     return 日本語のコンセプト, 英語のコンセプト
